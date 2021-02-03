@@ -1,0 +1,108 @@
+{{>navigation}}
+
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Registrar Nuevo Empleado</h4>
+                </div>
+                <div class="card-body">
+                    <form  id="formEmpleados" method="POST" name="formEmpleados" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                    <label for="">Cedula</label>
+                    <input type="text" class="form-control" name="cedula" id="cedula">
+                </div>
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" >
+                </div>
+                <div class="form-group">
+                     <label for="">Apellido</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" >
+                </div>
+                <div class="form-group">
+                    <label for="">Departamento</label>
+                    <select name="departamento" id="departamento" class="form-control" >
+                        <option value="">Seleccionar</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Cargo</label>
+                    <select name="cargo" id="cargo" class="form-control" >
+                        <option value="">Seleccionar</option>
+                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-danger btn-block mt-4" id="crear" >
+                                Generar Codigo
+                            </button>
+                        </div>
+                        <div class="col-6 mx-auto">
+                            <input type="hidden" name="codigo" id="codigo" class="form-control" >
+                        </div>
+                    </div>
+                </div> 
+                            </div>
+                            <div class="col-4">
+                                <div >
+                                    <img src="/img/perfil.png" alt="" id="foto" class="img-fluid img-thumbnail" > 
+                                </div>
+                                <input type="file" class="form-control" name="fotoPerfil" id="perfil" class="btn btn-danger">
+                                <div class="mt-2">
+                                    <label for="">Codigo QR</label>
+                            <div id="codigoQR" style="height: 50px; width: 50px;" ></div>
+                                </div>
+                            </div> 
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-6 ">
+                                <div class="form-group mx-auto">
+                                    <button type="submit" class="btn btn-primary btn-block"  >
+                                        Registrar 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/qrcode.js"></script>
+<script src="/js/regitrar.js"></script>
+ <script>
+
+    const imagen = document.getElementById("perfil");
+    const foto = document.getElementById("foto");
+
+    imagen.addEventListener('change', (e)=>{
+        
+       let reader = new FileReader();
+        // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+        reader.readAsDataURL(e.target.files[0]);
+        // Le decimos que cuando este listo ejecute el código interno
+        reader.onload = function(){
+    
+        foto.setAttribute('src', reader.result);
+  
+        };
+        
+     })
+
+    function createPreview(file) {
+    const imgCodified = URL.createObjectURL(file)
+    console.log(imgCodified);
+    foto.setAttribute('src', imgCodified);
+}
+ </script>    

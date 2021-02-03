@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto ">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Personal de la empresa</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <th>cedula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cargo</th>
+                            <th>Departamento</th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            {{#each  resultados }}
+                                <tr>
+                                    <td>{{cedula}}</td>
+                                    <td>{{nombre}}</td>
+                                    <td>{{apellido}}</td>
+                                    <td>{{cargo}}</td>
+                                    <td>{{departamento}}</td>
+                                    <td>
+                                        <a href="/carnet/{{cedula}}" target="_blank" class="btn btn-success" rel="noopener noreferrer"> 
+                                            <i class="fas fa-id-card"></i>
+                                        </a>  
+                                    </td>
+                                    <td>
+                                        <button  class="btn btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mx-auto ">
+            <button type="button" id="registro" class="btn btn-block btn-primary" >
+                Registrar nuevo empleado
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("registro").addEventListener('click', ()=>{
+        window.top.location.href ="/empleados";
+    })
+</script>
